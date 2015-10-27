@@ -2,6 +2,7 @@
 
 Supply Chain Weather is a sample Bluemix application which utilizes the [Weather Channel][weather_api_url] service and two mapping APIs, [Leaflet][leaflet_url] and [Esri Leaflet][esri_leaflet_url] to dynamically create and augment shipments for a retail chain store's supply chain.
 
+[![Build Status](https://travis-ci.org/IBM-Bluemix/supply-chain-weather.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/supply-chain-weather)
 ![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/a8b5d364b1994a80342395cc781ea890/badge.svg)
 
 
