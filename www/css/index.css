@@ -1,0 +1,375 @@
+/* Licensed under the Apache License. See footer for details. */
+
+html, body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.screen-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -50px;
+  padding: 0px;
+}
+
+.jumbotron {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 0px;
+  background-color: #1d3649;
+  color: white;
+  width: 100%;
+  vertical-align: center;
+}
+
+.header-block {
+  text-align: left;
+  white-space:nowrap;
+  vertical-align: middle;
+}
+
+#header-title {
+  display: inline;
+  vertical-align: middle;
+  padding: 10px;
+  margin: 0px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.banner-buttons {
+  text-align: right;
+}
+
+.banner-button-list {
+  display: inline-flex;
+  list-style: none;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  text-align: center;
+}
+
+.nav-item {
+  width: 100px;
+  font-weight: 600;
+}
+
+.bluemix-nav-list-link {
+  color: #FFFFFF;
+}
+
+.bluemix-nav-list-link:hover {
+  color: #5aaafa;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.panel-group .panel {
+  border-radius: 0px;
+  margin: 8px 0px;
+}
+
+#headingOne {
+  background: url(/../images/warning_icon.png) no-repeat;
+  background-position: left 10px center;
+}
+
+#headingTwo {
+  background: url(/../images/stop_icon.png) no-repeat;
+  background-position: left 10px center;
+}
+
+.panel-heading {
+  padding: 12px 15px;
+}
+
+.panel-title {
+  padding-left: 35px;
+  font-size: 20px;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background-color: #F3F3F3;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  font-size: 150%;
+  padding-right: 20px;
+  padding-top: 5px;
+}
+
+.leaflet-popup-content p {
+  margin-top: 0px;
+}
+
+.back-arrow {
+  width: 17px;
+  display: inline-block;
+  margin-left: -16px;
+  margin-top: -20px;
+  opacity: .6;
+}
+
+.back-arrow:hover {
+  width: 17px;
+  display: inline-block;
+  margin-left: -16px;
+  margin-top: -20px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.loading_gif {
+  width: 50px;
+  padding-top: 5px;
+}
+
+.date_img, .history_img, .predict_img {
+  width: 35px;
+  padding-top: 8px;
+  margin-right: 18px;
+  opacity: .7;
+}
+
+.date_img:hover, .history_img:hover, .predict_img:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+#background-con {
+  padding-top: 20px;
+  background-image: url("../images/weather-glass-skyscrapers.jpg")
+}
+
+#map-con {
+  border: 1px solid #DFE6EB;
+  padding: 15px;
+  background: #FFFFFF;
+  margin: 0px 15px;
+}
+
+#overflow {
+  overflow: hidden;
+  width: 100%;
+  height:500px;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#accordion {
+  margin: 20px;
+}
+
+.alert-panel {
+  padding: 0px;
+}
+
+.alert-list {
+  padding: 0px;
+  margin-bottom: 0px;
+  list-style: none;
+}
+
+.alert-item {
+  border: 1px solid #DFE6EB;
+  padding: 10px 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.alert-header{
+  font-weight: bold;
+}
+
+.footer{
+  background-color: #2c3e50;
+  width: 100%;
+  height: 50px;
+  color: white;
+}
+
+.push {
+  height: 50px;
+  clear: both;
+}
+
+.credit{
+  text-align: center;
+  padding-top: 14px;
+}
+
+.credit a {
+  color: #FFF;
+}
+
+.credit a:hover {
+  color: #FFF;
+}
+
+.info {
+  background-color: #DDD;
+  padding:          1.0em 1.0em;
+}
+
+.popup-header {
+  margin-top: 0px;
+}
+
+.history-row {
+  padding-top: 1px
+}
+
+.weather-data-row {
+  padding-bottom: 2px;
+}
+
+.td-indent {
+  padding-left: 1em;
+}
+
+.td-history {
+  padding-left: 20px;
+}
+
+.key-icon {
+  text-align: center;
+}
+
+.leaflet-marker-icon {
+  display: inline-flex;
+}
+
+/* weather icons */
+.wi {
+  color:                    #000;
+  text-shadow: 0px 0px 10px #FFF;
+  margin: auto;
+}
+
+.wi.wi-popup {
+  margin-top: 5px;
+}
+
+.wi.wi-size-xs {
+  font-size:   150%;
+}
+
+.wi.wi-size-s {
+  font-size:   200%;
+}
+
+.wi.wi-size-m {
+  font-size:   300%;
+}
+
+.wi.wi-size-l {
+  font-size:   350%;
+}
+
+.wi.wi-size-xl {
+  font-size:   450%;
+}
+
+.wi.wi-size-xxl {
+  font-size:   500%;
+}
+
+.wi.wi-day-sunny {
+  color:                    #F50;
+  text-shadow: 0px 0px 5px #FF0;
+}
+
+.wi.wi-dust {
+  color:                    #000;
+  text-shadow: 0px 0px 5px #DDD;
+}
+
+.wi.wi-fog, .wi.wi-smoke {
+  color:                    #000;
+  text-shadow: 0px 0px 5px #DDD;
+}
+
+.wi.wi-cloudy {
+  color:                    #444;
+  text-shadow: 0px 0px 5px #FFF;
+}
+
+.wi.wi-sprinkle, .wi.wi-rain {
+  color:                    #00F;
+  text-shadow: 0px 0px 5px #FFF;
+}
+
+.wi.wi-snow, .wi.wi-hail, .wi.wi-sleet {
+  color:                    #FFF;
+  text-shadow: 0px 0px 5px #000;
+}
+
+.wi.wi-lightning, .wi.wi-thunderstorm {
+  color:                    #FF0;
+  text-shadow: 0px 0px 5px #000;
+}
+
+.loc {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  margin: auto;
+}
+
+.retail-icon {
+
+}
+
+.retail-icon:before {
+  content: url("../images/retail_loc_icon.png")
+}
+
+.dist-icon {
+
+}
+
+.dist-icon:before {
+  content: url("../images/dist_center_icon.png")
+}
+
+.ship-ground {
+
+}
+
+.ship-ground:before {
+  content: url("../images/ship_ground_icon.png")
+}
+
+.ship-express {
+
+}
+
+.ship-express:before {
+  content: url("../images/ship_express_icon.png")
+}
+
+/*
+//==============================================================================
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//==============================================================================
+*/

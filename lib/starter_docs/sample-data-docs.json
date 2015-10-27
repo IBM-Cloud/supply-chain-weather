@@ -1,0 +1,252 @@
+[
+  {
+    "type" : "distribution-center",
+    "_id" : "D1",
+    "loc" : "Salt Lake City, Utah, US",
+    "lat" : 40.7192,
+    "lon" : -111.9006,
+    "managerName" : "Joseph Smith"
+  },
+  {
+    "type" : "distribution-center",
+    "_id" : "D2",
+    "loc" : "Cincinnati, Ohio, US",
+    "lat" : 39.1045,
+    "lon" : -84.4958,
+    "managerName" : "John Doe"
+  },
+  {
+    "type" : "distribution-center",
+    "_id" : "D3",
+    "loc" : "Albany, New York, US",
+    "lat" : 42.6525,
+    "lon" : -73.7572,
+    "managerName" : "Mary Joe"
+  },
+  {
+    "type" : "retail-location",
+    "_id" : "R1",
+    "loc" : "Raleigh, North Carolina, US",
+    "lat" : 35.7186,
+    "lon" : -78.6319,
+    "managerName" : "Jack Cracker"
+  },
+  {
+    "type" : "retail-location",
+    "_id" : "R2",
+    "loc" : "Austin, Texas, US",
+    "lat" : 30.2264,
+    "lon" : -97.7495,
+    "managerName" : "John Wayne"
+  },
+  {
+    "type" : "retail-location",
+    "_id" : "R3",
+    "loc" : "San Francisco, California, US",
+    "lat" : 37.7295,
+    "lon" : -122.4481,
+    "managerName" : "Sandy Payne"
+  },
+  {
+    "type" : "retail-location",
+    "_id" : "R4",
+    "loc" : "New York, New York, US",
+    "lat" : 40.7127,
+    "lon" : -74.0059,
+    "managerName" : "John Wayne"
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S1",
+    "service" : "ground",
+    "desc" : "Canned goods",
+    "distribution" : "D2",
+    "retail" : "R1",
+    "curLoc" : "Blacksburg, West Virginia, US",
+    "curLat" : 37.2303,
+    "curLon" : -80.4199,
+    "estDel" : "Thu, 17 Oct 2015",
+    "lastUpdate" : "Thu, 15 Oct 2015 16:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I4",
+        "quantity" : 100
+      },
+      {
+        "item" : "I5",
+        "quantity" : 50
+      }
+    ]
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S2",
+    "service" : "ground",
+    "desc" : "Dairy and produce",
+    "distribution" : "D2",
+    "retail" : "R2",
+    "curLoc" : "Memphis, Tennessee, US",
+    "curLat" : 35.1918,
+    "curLon" : -90.0220,
+    "estDel" : "Thu, 16 Oct 2015",
+    "lastUpdate" : "Thu, 13 Oct 2015 12:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I9",
+        "quantity" : 85
+      }
+    ]
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S3",
+    "service" : "express",
+    "desc" : "Bread and pasta",
+    "distribution" : "D1",
+    "retail" : "R3",
+    "curLoc" : "Reno, Nevada, US",
+    "curLat" : 39.4404,
+    "curLon" : -119.7949,
+    "estDel" : "Thu, 20 Oct 2015",
+    "lastUpdate" : "Thu, 19 Oct 2015 12:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I6",
+        "quantity" : 200
+      },
+      {
+        "item" : "I10",
+        "quantity" : 40
+      }
+    ]
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S4",
+    "service" : "ground",
+    "desc" : "Dairy",
+    "distribution" : "D1",
+    "retail" : "R3",
+    "curLoc" : "Spring Creek, Nevada, US",
+    "curLat" : 40.8055,
+    "curLon" : -115.7629,
+    "estDel" : "Thu, 22 Oct 2015",
+    "lastUpdate" : "Thu, 20 Oct 2015 12:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I9",
+        "quantity" : 85
+      }
+    ]
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S5",
+    "service" : "ground",
+    "desc" : "Rain gear",
+    "distribution" : "D2",
+    "retail" : "R2",
+    "curLoc" : "Dallas, Texas, US",
+    "curLat" : 32.7411,
+    "curLon" : -96.8005,
+    "estDel" : "Thu, 22 Oct 2015",
+    "lastUpdate" : "Thu, 20 Oct 2015 12:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I7",
+        "quantity" : 85
+      },
+      {
+        "item" : "I8",
+        "quantity" : 85
+      }
+    ]
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S6",
+    "service" : "express",
+    "desc" : "Cold weather clothes",
+    "distribution" : "D3",
+    "retail" : "R4",
+    "curLoc" : "Poughkeepsie, New York, US",
+    "curLat" : 41.7000,
+    "curLon" : -73.9167,
+    "estDel" : "Thu, 24 Oct 2015",
+    "lastUpdate" : "Thu, 24 Oct 2015 12:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I1",
+        "quantity" : 85
+      },
+      {
+        "item" : "I2",
+        "quantity" : 100
+      },
+      {
+        "item" : "I3",
+        "quantity" : 40
+      }
+    ]
+  },
+  {
+    "type" : "item",
+    "_id" : "I1",
+    "name" : "Jacket",
+    "supplier" : "North Face"
+  },
+  {
+    "type" : "item",
+    "_id" : "I2",
+    "name" : "Gloves",
+    "supplier" : "North Face"
+  },
+  {
+    "type" : "item",
+    "_id" : "I3",
+    "name" : "Scarf",
+    "supplier" : "J Crew"
+  },
+  {
+    "type" : "item",
+    "_id" : "I4",
+    "name" : "Beans",
+    "supplier" : "Goya"
+  },
+  {
+    "type" : "item",
+    "_id" : "I5",
+    "name" : "Soup",
+    "supplier" : "Campbell"
+  },
+  {
+    "type" : "item",
+    "_id" : "I6",
+    "name" : "Bread",
+    "supplier" : "The Bread Co."
+  },
+  {
+    "type" : "item",
+    "_id" : "I7",
+    "name" : "Rain Jacket",
+    "supplier" : "Barbour"
+  },
+  {
+    "type" : "item",
+    "_id" : "I8",
+    "name" : "Umbrella",
+    "supplier" : "LifeTek"
+  },
+  {
+    "type" : "item",
+    "_id" : "I9",
+    "name" : "Milk",
+    "supplier" : "Abbott"
+  },
+  {
+    "type" : "item",
+    "_id" : "I10",
+    "name" : "Pasta",
+    "supplier" : "Barilla"
+  }
+]

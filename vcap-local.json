@@ -1,0 +1,27 @@
+{
+  "services": {
+    "user-provided": [
+      {
+        "name":  "weather-service",
+        "credentials": {
+          "apiKey": "YOUR_API_KEY",
+          "url":    "http://api.weather.com"
+        }
+      }
+    ],
+    "cloudantNoSQLDB": [
+      {
+        "name": "supply-chain-datastore",
+        "label": "cloudantNoSQLDB",
+        "plan": "Shared",
+        "credentials": {
+          "username": "YOUR_USERNAME",
+          "password": "YOUR_PASSWORD",
+          "host": "YOUR_HOST",
+          "port": 443,
+          "url": "YOUR_URL"
+        }
+      }
+    ]
+  }
+}
