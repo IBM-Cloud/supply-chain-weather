@@ -2,3 +2,4 @@ bower_components
 node_modules
 tmp
 vcap-local.json
+npm-debug.log

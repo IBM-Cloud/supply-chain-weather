@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "cake":             "cake",
-    "watch":            "cake watch"
+    "watch":            "cake watch",
+    "start": "node app.js",
+    "test": "echo no tests"
   },
   "engines": {
       "node": "4.0.*"
