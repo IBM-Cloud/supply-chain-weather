@@ -6,6 +6,42 @@ Supply Chain Weather is a sample Bluemix application which utilizes the [Weather
 ![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/a8b5d364b1994a80342395cc781ea890/badge.svg)
 
 
+## Creating a shipment (example)
+`POST /api/v1/db/shipments`
+
+Body:
+```
+{
+    "_id": "S7",
+    "type": "shipment",
+    "service": "ground",
+    "desc": "Cold weather clothes",
+    "distribution": "D3",
+    "retail": "R4",
+    "status": "pending",
+    "curLoc": "Charleston, South Carolina, US",
+    "curLat": 32.780891,
+    "curLon": -79.93471,
+    "estDel": "Thu, 24 Oct 2015",
+    "lastUpdate": "Thu, 24 Oct 2015 12:15:37 GMT",
+    "items": [
+        {
+            "item": "I1",
+            "quantity": 85
+        },
+        {
+            "item": "I2",
+            "quantity": 100
+        },
+        {
+            "item": "I3",
+            "quantity": 40
+        }
+    ]
+}
+```
+
+
 ## Troubleshooting
 
 The primary source of debugging information for your Bluemix app is the logs. To see them, run the following command using the Cloud Foundry CLI:
@@ -19,11 +55,11 @@ For more detailed information on troubleshooting your application, see the [Trou
 We are more than happy to accept external contributions to this project, be it in the form of issues and pull requests. If you find a bug, please report it via the [Issues section][issues_url] or even better, fork the project and submit a pull request with your fix! Pull requests will be evaulated on an individual basis based on value add to the sample application.
 
 ### Credit
- Warning icon made by [Amit Jakhu][amit_jakhu_url] [[source]][warning_icon_url]  
-Stop icon made by [freepik][freepik_url] [[source]][stop_icon_url]  
-Distribution center icon made by [freepik][freepik_url] [[source]][dist_center_icon_url]  
-Retail location icon made by [SimpleIcon][simple_icon_url] [[source]][retail_loc_icon_url]  
-Ground shipment icons made by [freepik][freepik_url] [[source]][ship_ground_icon_url]  
+ Warning icon made by [Amit Jakhu][amit_jakhu_url] [[source]][warning_icon_url]
+Stop icon made by [freepik][freepik_url] [[source]][stop_icon_url]
+Distribution center icon made by [freepik][freepik_url] [[source]][dist_center_icon_url]
+Retail location icon made by [SimpleIcon][simple_icon_url] [[source]][retail_loc_icon_url]
+Ground shipment icons made by [freepik][freepik_url] [[source]][ship_ground_icon_url]
 Express shipment icons made by [freepik][freepik_url] [[source]][ship_express_icon_url]
 
 ## Privacy Notice
