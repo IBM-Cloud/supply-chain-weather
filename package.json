@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "cake":             "cake",
-    "watch":            "cake watch"
+    "watch":            "cake watch",
+    "start": "node app.js"
   },
   "engines": {
       "node": "4.0.*"
