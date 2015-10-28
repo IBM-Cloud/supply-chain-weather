@@ -6,7 +6,9 @@ Supply Chain Weather is a sample Bluemix application which utilizes the [Weather
 ![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/a8b5d364b1994a80342395cc781ea890/badge.svg)
 
 
-## Creating a shipment (example)
+## Example REST Calls
+
+### Creating a shipment (example)
 `POST /api/v1/db/shipments`
 
 Body:
@@ -41,6 +43,8 @@ Body:
 }
 ```
 
+### Sending a notification for a new shipment (example)
+`GET /api/v1/db/shipments/notify?shipment=S7&environment=dev`
 
 ## Troubleshooting
 
