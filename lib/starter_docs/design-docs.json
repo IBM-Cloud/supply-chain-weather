@@ -19,7 +19,7 @@
     "_id": "_design/shipments",
     "views": {
       "shipments_index": {
-        "map": "function(doc) {if (doc.type === 'shipment') {emit (doc._id, {uniqueId : doc._id,revNum : doc._rev,service : doc.service,description : doc.desc,distribution : doc.distribution,retail : doc.retail,curLocation : doc.curLoc,curLatitude : doc.curLat,curLongitude : doc.curLon,estimatedDelivery : doc.estDel,lastUpdate : doc.lastUpdate,items : doc.items});}}"
+        "map": "function(doc) {if (doc.type === 'shipment') {emit (doc._id, {uniqueId : doc._id,revNum : doc._rev,status: doc.status, service : doc.service,description : doc.desc,distribution : doc.distribution,retail : doc.retail,curLocation : doc.curLoc,curLatitude : doc.curLat,curLongitude : doc.curLon,estimatedDelivery : doc.estDel,lastUpdate : doc.lastUpdate,items : doc.items});}}"
       }
     }
   },
