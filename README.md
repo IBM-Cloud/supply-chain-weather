@@ -59,12 +59,12 @@ For more detailed information on troubleshooting your application, see the [Trou
 We are more than happy to accept external contributions to this project, be it in the form of issues and pull requests. If you find a bug, please report it via the [Issues section][issues_url] or even better, fork the project and submit a pull request with your fix! Pull requests will be evaulated on an individual basis based on value add to the sample application.
 
 ### Credit
- Warning icon made by [Amit Jakhu][amit_jakhu_url] [[source]][warning_icon_url]
-Stop icon made by [freepik][freepik_url] [[source]][stop_icon_url]
-Distribution center icon made by [freepik][freepik_url] [[source]][dist_center_icon_url]
-Retail location icon made by [SimpleIcon][simple_icon_url] [[source]][retail_loc_icon_url]
-Ground shipment icons made by [freepik][freepik_url] [[source]][ship_ground_icon_url]
-Express shipment icons made by [freepik][freepik_url] [[source]][ship_express_icon_url]
+* Warning icon made by [Amit Jakhu][amit_jakhu_url] [[source]][warning_icon_url]
+* Stop icon made by [freepik][freepik_url] [[source]][stop_icon_url]
+* Distribution center icon made by [freepik][freepik_url] [[source]][dist_center_icon_url]
+* Retail location icon made by [SimpleIcon][simple_icon_url] [[source]][retail_loc_icon_url]
+* Ground shipment icons made by [freepik][freepik_url] [[source]][ship_ground_icon_url]
+* Express shipment icons made by [freepik][freepik_url] [[source]][ship_express_icon_url]
 
 ## Privacy Notice
 The supply-chain-weather sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
