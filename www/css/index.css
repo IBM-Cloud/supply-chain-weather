@@ -308,7 +308,7 @@ a, a:hover, a:focus {
 }
 
 .accept-icon {
-  background: url(/../images/accepted_icon.png) no-repeat;
+  background: url(/../images/delivered_icon.png) no-repeat;
 }
 
 .reject-icon {
@@ -345,7 +345,7 @@ a, a:hover, a:focus {
 
 .credit{
   text-align: center;
-  padding-top: 14px;
+  padding-top: 5px;
 }
 
 .credit a {

@@ -297,6 +297,10 @@ function gotCurrentConditions(location, data, status, jqXhr) {
 
   marker.bindPopup(popupText);
   marker.setOpacity(1);
+
+  // If shipment is pending, at it to the emergency shipments list
+  if (location.status === "pending")
+    createEmergencyShipment(location);
 }
 
 //------------------------------------------------------------------------------
@@ -763,7 +767,6 @@ function getShipments() {
       });
 
       getPredictions();
-      getEmergencyShipments();
     },
     error: function() {
       L.popup()
@@ -788,7 +791,7 @@ function addShipment(shipment, icon) {
     }
   });
 
-  // Add shipment to the shipment list
+  // Add shipment to the shipment lists
   var li = document.createElement("li");
   li.setAttribute("id", shipment.uniqueId + "-side");
   li.setAttribute("class", "shipment " + icon);
@@ -825,8 +828,8 @@ function getPredictions() {
                        "<span class='alert-header'>Suggestion: </span>" + "Order additonal rain gear" + "</br>" +
                        "<span class='alert-header'>Manager: </span>" + location.manager +
                      "</p></a><div class='icon-con'>" +
-                     "<i class='accept-icon'></i>" +
-                     "<i class='reject-icon'></i>" +
+                       "<i class='accept-icon'></i>" +
+                       "<i class='reject-icon'></i>" +
                      "</div>";
       document.getElementById("prediction-list").appendChild(li);
       count++;
@@ -834,33 +837,28 @@ function getPredictions() {
   });
 
   // Set notification badge for imminent weather predictions
-  $("a[href='#collapseOne']")[0].innerHTML = "Predictions (" + count + ")";
+  //$("a[href='#collapseOne']")[0].innerHTML = "Predictions (" + count + ")";
 }
 
 //------------------------------------------------------------------------------
-// Retrieves the current emergency shipments requested
-function getEmergencyShipments() {
+// Creates an emergency shipment request for a pending shipment
+function createEmergencyShipment(location) {
 
-  var count = 0;
-  Locations.forEach(function(location){
-    if (location.type === "S" && location.status === "pending") {
-      insertWeatherBadge(location.name, "wi-snow", location.desc);
-      var li = document.createElement("li");
-      li.setAttribute("id", location.uniqueId + "-emergency");
-      li.setAttribute("class", "alert-item wi wi-size-s " + "wi-snow");
-      li.innerHTML = "<a href='javascript:goBack(\"" + location.name + "\")'><p class='alert-text'>" +
-                       "<span class='alert-header'>Conditions: </span>" + "Heavy snowstorms" + "</br>" +
-                       "<span class='alert-header'>Suggestion: </span>" + "Non-perishables and snow removal equipment" + "</br>" +
-                       "<span class='alert-header'>Method: </span>" + "Express" +
-                     "</p></a>" +
-                     "<div class='icon-con'><i class='notify-icon'></i></div>";
-      document.getElementById("emergency-list").appendChild(li);
-      count++;
-    }
-  });
+  insertWeatherBadge(location.name, "wi-snow", location.desc);
+  var li = document.createElement("li");
+  li.setAttribute("id", location.uniqueId + "-emergency");
+  li.setAttribute("class", "alert-item wi wi-size-s " + "wi-snow");
+  li.innerHTML = "<a href='javascript:goBack(\"" + location.name + "\")'><p class='alert-text'>" +
+                   "<span class='alert-header'>Conditions: </span>" + "Heavy snowstorms" + "</br>" +
+                   "<span class='alert-header'>Suggestion: </span>" + "Non-perishables and snow removal equipment" + "</br>" +
+                   "<span class='alert-header'>Method: </span>" + "Express" +
+                 "</p></a><div class='icon-con'>" +
+                   "<i class='notify-icon'></i>" +
+                 "</div>";
+  document.getElementById("emergency-list").appendChild(li);
 
   // Set notification badge for emergency shipments
-  $("a[href='#collapseTwo']")[0].innerHTML = "Emergency Shipments (" + count + ")";
+  //$("a[href='#collapseTwo']")[0].innerHTML = "Emergency Shipments (" + count + ")";
 }
 
 //------------------------------------------------------------------------------
