@@ -290,8 +290,6 @@ a, a:hover, a:focus {
 
 .alert-item:hover {
   cursor: pointer;
-  background-color: #94A3AB;
-  border: none;
 }
 
 .alert-text {
@@ -303,6 +301,34 @@ a, a:hover, a:focus {
 
 .alert-header{
   font-weight: bold;
+}
+
+.icon-con {
+  display: inherit;
+}
+
+.accept-icon {
+  background: url(/../images/accepted_icon.png) no-repeat;
+}
+
+.reject-icon {
+  background: url(/../images/rejected_icon.png) no-repeat;
+}
+
+.notify-icon {
+  background: url(/../images/notify_icon.png) no-repeat;
+}
+
+.accept-icon, .reject-icon, .notify-icon {
+  background-size: 26px;
+  width: 26px;
+  margin-left: 10px;
+  opacity: .60;
+}
+
+.accept-icon:hover, .reject-icon:hover, .notify-icon:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .footer{

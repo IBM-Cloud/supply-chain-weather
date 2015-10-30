@@ -824,7 +824,10 @@ function getPredictions() {
                        "<span class='alert-header'>Conditions: </span>" + "Severe Thunderstorms" + "</br>" +
                        "<span class='alert-header'>Suggestion: </span>" + "Order additonal rain gear" + "</br>" +
                        "<span class='alert-header'>Manager: </span>" + location.manager +
-                     "</p></a>";
+                     "</p></a><div class='icon-con'>" +
+                     "<i class='accept-icon'></i>" +
+                     "<i class='reject-icon'></i>" +
+                     "</div>";
       document.getElementById("prediction-list").appendChild(li);
       count++;
     }
@@ -849,7 +852,8 @@ function getEmergencyShipments() {
                        "<span class='alert-header'>Conditions: </span>" + "Heavy snowstorms" + "</br>" +
                        "<span class='alert-header'>Suggestion: </span>" + "Non-perishables and snow removal equipment" + "</br>" +
                        "<span class='alert-header'>Method: </span>" + "Express" +
-                     "</p></a>";
+                     "</p></a>" +
+                     "<div class='icon-con'><i class='notify-icon'></i></div>";
       document.getElementById("emergency-list").appendChild(li);
       count++;
     }
