@@ -847,9 +847,11 @@ function getPredictions() {
 function createEmergencyShipment(shipment) {
 
   // Get shipment's destination
+  var manager;
   Locations.forEach(function(location) {
     if (location.uniqueId === shipment.retail) {
       insertWeatherBadge(location.name, "wi-snow");
+      manager = location.manager;
     }
   });
 
@@ -861,7 +863,7 @@ function createEmergencyShipment(shipment) {
                    "<span class='alert-header'>Suggestion: </span>" + "Non-perishables and snow removal equipment" + "</br>" +
                    "<span class='alert-header'>Method: </span>" + "Express" +
                  "</p></a><div class='icon-con'>" +
-                   "<a class='icon-con' href='javascript:remindManager(\"" + shipment.uniqueId + "\")'><i class='notify-icon'></i></a>" +
+                   "<a class='icon-con' href='javascript:remindManager(\"" + shipment.uniqueId + "\",\"" + manager + "\")'><i class='notify-icon'></i></a>" +
                  "</div>";
   document.getElementById("emergency-list").appendChild(li);
 
@@ -961,7 +963,7 @@ function createShipment(destId) {
       console.log(data)
       // Send a notification to manager and remove prediction from list
       if (status === "success") {
-        remindManager(data.id);
+        remindManager(data.id, "Jack Cracker");
         removeShipment(destId + "-prediction", "prediction-list");
       }
   });
@@ -975,10 +977,10 @@ function removeShipment(uniqueId, list) {
 
 //------------------------------------------------------------------------------
 // Resend notification to manager to accept shipment
-function remindManager(shipmentId) {
+function remindManager(shipmentId, manager) {
   $.get("/api/v1/db/shipments/notify?shipment=" + shipmentId + "&environment=prod",
   function(data, status){
-      alert("Data: " + data + "\nStatus: " + status);
+      alert("We have sent " + manager + " a notification about this shipment!");
   });
 }
 
