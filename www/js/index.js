@@ -985,6 +985,17 @@ function remindManager(shipmentId, manager) {
 }
 
 //------------------------------------------------------------------------------
+// Reset DB
+function resetDB() {
+  $.get("/api/v1/db/reset",
+  function(data, status){
+      if (status === "success") {
+        alert("DB has been reset. Please reload the page");
+      }
+  });
+}
+
+//------------------------------------------------------------------------------
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
