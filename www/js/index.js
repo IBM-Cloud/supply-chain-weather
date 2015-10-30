@@ -35,9 +35,9 @@ function onLoad() {
     .setContent(getHelpHTML())
   createHelpBtn("help", "Help", displayHelp);
 
-  Key = L.popup()
+  /*Key = L.popup()
     .setContent(getKeyHTML())
-  createHelpBtn("key", "Key", displayKey);
+  createHelpBtn("key", "Key", displayKey);*/
 
   // Add layer control
   var ngLayer = L.esri.basemapLayer("NationalGeographic");
@@ -721,27 +721,40 @@ function getShipments() {
       if (data.length > 0) {
         for (var i=0; i < data.length; i++) {
 
-          /* Create an alert item if the shipment is in jeopardy
-          if (data[i].status==="yellow") {
-            addAlert(data[i], "warning-list");
-            warnCount++;
+          // Create an alert item if the shipment is in jeopardy
+          var skipMarker = true;
+          if (data[i].status==="pending") {
+            addShipment(data[i], "pending-icon");
+            skipMarker = false;
           }
-          else if (data[i].status==="red") {
-            addAlert(data[i], "alteration-list");
-            altCount++;
+          else if (data[i].status==="accepted") {
+            addShipment(data[i], "accepted-icon");
+            skipMarker = false;
+          }
+          else if (data[i].status==="shipped") {
+            addShipment(data[i], "shipped-icon");
+            skipMarker = false;
+          }
+          /*else if (data[i].status==="delivered") {
+            addShipment(data[i], "delivered-icon");
+          }
+          else if (data[i].status==="rejected") {
+            addShipment(data[i], "rejected-icon");
           }*/
 
           // Add shipment icon to map
-          Locations.push({
-            uniqueId : data[i].uniqueId,
-            lat : data[i].curLatitude,
-            lon : data[i].curLongitude,
-            name : data[i].curLocation,
-            desc : data[i].description,
-            service : data[i].service,
-            estimatedDelivery : data[i].estimatedDelivery,
-            type : "S"
-          });
+          if (!skipMarker) {
+            Locations.push({
+              uniqueId : data[i].uniqueId,
+              lat : data[i].curLatitude,
+              lon : data[i].curLongitude,
+              name : data[i].curLocation,
+              desc : data[i].description,
+              service : data[i].service,
+              estimatedDelivery : data[i].estimatedDelivery,
+              type : "S"
+            });
+          }
         }
       }
 
@@ -772,30 +785,35 @@ function getShipments() {
   })
 }
 
-function addAlert(alert, list) {
+function addShipment(shipment, icon) {
 
   // Get info about shipment's origin and destination
   var orig, dest;
   Locations.forEach(function(location) {
-    if (location.uniqueId === alert.distribution)
+    if (location.uniqueId === shipment.distribution)
       orig = location.name;
-    else if (location.uniqueId === alert.retail) {
-      contact = location.manager;
+    else if (location.uniqueId === shipment.retail) {
       dest = location.name;
     }
   });
 
-  // Add item to the respective alert list
-  var li = document.createElement("li")
-  li.innerHTML = "<a href='javascript:goBack(\"" + alert.curLocation + "\")'><p class='alert-item'>" +
-                   "<span class='alert-header'>Origin: </span>" + orig + " | " +
-                   "<span class='alert-header'>Destination: </span>" + dest + " | " +
-                   "<span class='alert-header'>Current Location: </span>" + alert.curLocation + "</br>" +
-                   "<span class='alert-header'>Description: </span>" + alert.description + " | " +
-                   "<span class='alert-header'>Update: </span>" + alert.statusUpdate + " | "  +
-                   "<span class='alert-header'>Contact: </span>" + contact +
+  // Add shipment to the shipment list
+  var li = document.createElement("li");
+  li.setAttribute("class", "shipment " + icon);
+  li.innerHTML = "<a href='javascript:goBack(\"" + shipment.curLocation + "\")'><p class='shipment-text'>" +
+                   "<span class='shipment-text-header'>Description: </span>" + shipment.description + "</br>" +
+                   "<span class='shipment-text-header'>Origin: </span>" + orig + "</br>" +
+                   "<span class='shipment-text-header'>Destination: </span>" + dest + "</br>" +
                  "</p></a>";
-  document.getElementById(list).appendChild(li);
+  document.getElementById("shipments-list-side").appendChild(li);
+  var liNew = document.createElement("li");
+  liNew.setAttribute("class", "shipment " + icon);
+  liNew.innerHTML = "<a href='javascript:goBack(\"" + shipment.curLocation + "\")'><p class='shipment-text'>" +
+                   "<span class='shipment-text-header'>Description: </span>" + shipment.description + "</br>" +
+                   "<span class='shipment-text-header'>Origin: </span>" + orig + "</br>" +
+                   "<span class='shipment-text-header'>Destination: </span>" + dest + "</br>" +
+                 "</p></a>";
+  document.getElementById("shipments-list-bottom").appendChild(liNew);
 }
 
 //------------------------------------------------------------------------------

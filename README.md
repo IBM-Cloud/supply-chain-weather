@@ -12,10 +12,11 @@ Supply Chain Weather is a sample Bluemix application which utilizes the [Weather
 `POST /api/v1/db/shipments`
 
 Body:
+
 ```
-{
+{  
     "_id": "S7",
-    "type": "shipment",
+    "type": "shipment",  
     "service": "ground",
     "desc": "Cold weather clothes",
     "distribution": "D3",
@@ -59,12 +60,17 @@ For more detailed information on troubleshooting your application, see the [Trou
 We are more than happy to accept external contributions to this project, be it in the form of issues and pull requests. If you find a bug, please report it via the [Issues section][issues_url] or even better, fork the project and submit a pull request with your fix! Pull requests will be evaulated on an individual basis based on value add to the sample application.
 
 ### Credit
-* Warning icon made by [Amit Jakhu][amit_jakhu_url] [[source]][warning_icon_url]
-* Stop icon made by [freepik][freepik_url] [[source]][stop_icon_url]
+* Warning icon made by [Alain Loubet][alain_loubet_url] [[source]][warning_icon_url]
+* Siren icon made by [Daniel Canabrava Torres][freepik_url] [[source]][daniel_canabrava_url]
 * Distribution center icon made by [freepik][freepik_url] [[source]][dist_center_icon_url]
 * Retail location icon made by [SimpleIcon][simple_icon_url] [[source]][retail_loc_icon_url]
-* Ground shipment icons made by [freepik][freepik_url] [[source]][ship_ground_icon_url]
-* Express shipment icons made by [freepik][freepik_url] [[source]][ship_express_icon_url]
+* Ground shipment icon made by [freepik][freepik_url] [[source]][ship_ground_icon_url]
+* Express shipment icon made by [freepik][freepik_url] [[source]][ship_express_icon_url]
+* Accepted icon made by [Yamini Ahluwalia][yamini_ahluwalia_url] [[source]][accepted_icon_url]
+* Rejected icon made by [Kris Brauer][kris_brauer_url] [[source]][rejected_icon_url]
+* Pending icon made by [Leonardo Schneider][leaonardo_schneider_url] [[source]][pending_icon_url]
+* Shipped icon made by [Nicholas Menghini][nicholas_menghini_url] [[source]][shipped_icon_url]
+* Delivered icon made by [addylord][addylord_url] [[source]][delivered_icon_url]
 
 ## Privacy Notice
 The supply-chain-weather sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
@@ -88,12 +94,23 @@ Deployment tracking can be disabled by removing `require("cf-deployment-tracker-
 [download_node_url]: https://nodejs.org/download/
 [cake_url]: http://coffeescript.org/#cake
 [issues_url]: https://github.com/IBM-Bluemix/supply-chain-weather/issues
-[amit_jakhu_url]: http://www.amitjakhu.com/
-[warning_icon_url]: http://www.flaticon.com/free-icon/warning-triangle_10190
+[warning_icon_url]: https://thenounproject.com/search/?q=warning&i=14055
 [freepik_url]: http://www.freepik.com/
-[stop_icon_url]: http://www.flaticon.com/free-icon/stop-sign_1722
+[siren_icon_url]: https://thenounproject.com/search/?q=siren&i=16370
 [dist_center_icon_url]: http://www.flaticon.com/free-icon/warehouse-with-boxes_75762
 [simple_icon_url]: http://simpleicon.com/
 [retail_loc_icon_url]: http://www.flaticon.com/free-icon/store_33658
 [ship_ground_icon_url]: http://www.flaticon.com/free-icon/delivery-truck_31520
 [ship_express_icon_url]: http://www.flaticon.com/free-icon/airplane-flight_67076
+[accepted_icon_url]: https://thenounproject.com/search/?q=processing&i=117179
+[pending_icon_url]: https://thenounproject.com/search/?q=progress&i=99631
+[rejected_icon_url]: https://thenounproject.com/search/?q=rejected&i=182502
+[shipped_icon_url]: https://thenounproject.com/search/?q=in+progress&i=17052
+[delivered_icon_url]: https://thenounproject.com/search/?q=completed&i=21729
+[addylord_url]: https://thenounproject.com/adelime/
+[nicholas_menghini_url]: http://nicholasmenghini.com/
+[leaonardo_schneider_url]: http://www.leonardoschneider.com/
+[kris_brauer_url]: https://thenounproject.com/Krisb/
+[yamini_ahluwalia_url]: https://www.behance.net/yaminiahluwalia
+[alain_loubet_url]: https://thenounproject.com/PictaMan/
+[daniel_canabrava_url]: https://www.behance.net/DanielCanabrava

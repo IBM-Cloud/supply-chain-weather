@@ -61,16 +61,34 @@
         <div id="background-con">
 
             <!--Map Container-->
-            <div id="map-con">
-                <div id="overflow">
-                    <div id="map"></div>
+            <div id="map-row" class="row">
+                <div id="map-col" class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div id="map-con">
+                        <div id="overflow">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="shipments-col-side" class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                    <div id="shipments-div-side">
+                        <ul id="shipments-list-side">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="shipments-col-bottom" class="hidden-lg hidden-md col-sm-offset-1 col-sm-10 col-xs-12">
+                    <div id="shipments-div-bottom">
+                        <ul id="shipments-list-bottom">
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <!--Warnings Accordian-->
-            <div class="row">
-                <div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div id="warnings-row" class="row">
+                <div class="col-lg-6 col-md-offset-0 col-md-6 col-sm-offset-1 col-sm-10 col-xs-12">
+                    <div class="panel-group" role="tablist" aria-multiselectable="true">
                       <div id="warnings" class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
                           <h4 class="panel-title">
@@ -84,6 +102,10 @@
                           </div>
                         </div>
                       </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-offset-0 col-md-6 col-sm-offset-1 col-sm-10 col-xs-12">
+                    <div class="panel-group" role="tablist" aria-multiselectable="true">
                       <div id="alterations" class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingTwo">
                           <h4 class="panel-title">

@@ -69,30 +69,6 @@ html, body {
   cursor: pointer;
 }
 
-.panel-group .panel {
-  border-radius: 0px;
-  margin: 8px 0px;
-}
-
-#headingOne {
-  background: url(/../images/warning_icon.png) no-repeat;
-  background-position: left 10px center;
-}
-
-#headingTwo {
-  background: url(/../images/stop_icon.png) no-repeat;
-  background-position: left 10px center;
-}
-
-.panel-heading {
-  padding: 12px 15px;
-}
-
-.panel-title {
-  padding-left: 35px;
-  font-size: 20px;
-}
-
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background-color: #F3F3F3;
 }
@@ -146,11 +122,19 @@ html, body {
   background-image: url("../images/weather-glass-skyscrapers.jpg")
 }
 
+#map-row {
+  margin: 0px;
+}
+
+#map-col {
+  padding: 0px;
+}
+
 #map-con {
   border: 1px solid #DFE6EB;
   padding: 15px;
   background: #FFFFFF;
-  margin: 0px 15px;
+  margin-left:15px;
 }
 
 #overflow {
@@ -165,8 +149,123 @@ html, body {
   height: 100%;
 }
 
-#accordion {
-  margin: 20px;
+#shipments-col-side, #shipments-col-bottom {
+  padding: 0px;
+}
+
+#shipments-div-side, #shipments-div-bottom {
+  margin-right: 15px;
+  padding: 0px;
+  border: 1px solid #94A3AB;
+  background-color: #DFE6EB;
+}
+
+#shipments-div-side {
+  height: 532px;
+}
+
+#shipments-div-bottom {
+  margin: 0px 15px;
+  height: 200px;
+}
+
+#shipments-list-side, #shipments-list-bottom {
+  list-style: none;
+  margin: 0px;
+  height: inherit;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 0px;
+}
+
+.shipment {
+  padding: 3px 5px;
+  border-bottom: 1px solid #94A3AB;
+  height: 50px;
+}
+
+.shipment:hover {
+  cursor: pointer;
+  background-color: #94A3AB;
+  border: none;
+}
+
+a, a:hover, a:focus {
+  color: #000000;
+  text-decoration: none;
+}
+
+.shipment-text {
+  padding: 0px 0px 0px 44px;
+  margin: 0px;
+  font-size: 10px;
+}
+
+.shipment-text-header{
+  font-weight: bold;
+}
+
+.pending-icon {
+  background: url(/../images/pending_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+.accepted-icon {
+  background: url(/../images/accepted_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+.shipped-icon {
+  background: url(/../images/shipped_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+.delivered-icon {
+  background: url(/../images/delivered_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+.rejected-icon {
+  background: url(/../images/rejected_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+.panel-group {
+  margin: 0px;
+}
+
+#warnings-row {
+  margin: 20px 15px 0px 15px;
+}
+
+.panel-group .panel {
+  border-radius: 0px;
+}
+
+#headingOne {
+  background: url(/../images/warning_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+#headingTwo {
+  background: url(/../images/siren_icon.png) no-repeat;
+  background-position: left 10px center;
+  background-size: 32px;
+}
+
+.panel-heading {
+  padding: 12px 15px;
+}
+
+.panel-title {
+  padding-left: 35px;
+  font-size: 20px;
 }
 
 .alert-panel {

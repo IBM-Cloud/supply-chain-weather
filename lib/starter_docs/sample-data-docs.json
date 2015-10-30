@@ -58,6 +58,7 @@
   {
     "type" : "shipment",
     "_id" : "S1",
+    "status" : "shipped",
     "service" : "ground",
     "desc" : "Canned goods",
     "distribution" : "D2",
@@ -81,6 +82,7 @@
   {
     "type" : "shipment",
     "_id" : "S2",
+    "status" : "accepted",
     "service" : "ground",
     "desc" : "Dairy and produce",
     "distribution" : "D2",
@@ -100,6 +102,7 @@
   {
     "type" : "shipment",
     "_id" : "S3",
+    "status" : "shipped",
     "service" : "express",
     "desc" : "Bread and pasta",
     "distribution" : "D1",
@@ -123,6 +126,7 @@
   {
     "type" : "shipment",
     "_id" : "S4",
+    "status" : "shipped",
     "service" : "ground",
     "desc" : "Dairy",
     "distribution" : "D1",
@@ -142,6 +146,7 @@
   {
     "type" : "shipment",
     "_id" : "S5",
+    "status" : "shipped",
     "service" : "ground",
     "desc" : "Rain gear",
     "distribution" : "D2",
@@ -165,6 +170,7 @@
   {
     "type" : "shipment",
     "_id" : "S6",
+    "status" : "shipped",
     "service" : "express",
     "desc" : "Cold weather clothes",
     "distribution" : "D3",
@@ -186,6 +192,26 @@
       {
         "item" : "I3",
         "quantity" : 40
+      }
+    ]
+  },
+  {
+    "type" : "shipment",
+    "_id" : "S7",
+    "status" : "rejected",
+    "service" : "express",
+    "desc" : "Loaves of Bread",
+    "distribution" : "D3",
+    "retail" : "R4",
+    "curLoc" : "Albany, New York, US",
+    "curLat" : 42.6525,
+    "curLon" : -73.7572,
+    "estDel" : "Thu, 28 Oct 2015",
+    "lastUpdate" : "Thu, 27 Oct 2015 12:15:37 GMT",
+    "items" : [
+      {
+        "item" : "I6",
+        "quantity" : 125
       }
     ]
   },
