@@ -59,27 +59,6 @@ function onLoad() {
 
 //---Map Event Listeners--------------------------------------------------------
 
-  // Mouse Double-click: Gets the current weather conditions on location clicked
-  /*Map.on("dblclick", function(e) {
-    var location = {
-      lat:  e.latlng.lat,
-      lon:  e.latlng.lng,
-      name: e.latlng.lat.toFixed(4) + ", " + e.latlng.lng.toFixed(4)
-    };
-
-    var marker = L.marker(location, {
-      title:   location.name,
-      alt:     location.name,
-      opacity: 0
-    });
-
-    location.marker = marker;
-    marker.addTo(Map);
-
-    getLocationName(e.latlng.lat, e.latlng.lng, location);
-    getCurrentConditions(location);
-  })*/
-
   // New Zoom Level: Adjusts marker icon size
   Map.on("zoomend", function(e) {
     // Get the corresponding css class for the current zoom level
@@ -215,6 +194,41 @@ function getLocationName(lat, lon, loc) {
 }
 
 //------------------------------------------------------------------------------
+// Sets the popup for the input location
+function setPopup(location) {
+  if (location.type === "S")
+    getCurrentConditions(location);
+  else {
+    var type = (location.type==="D") ? "Distribution Center" : "Retail Location";
+    var table = [
+      "<table>",
+        "<tr><td class='weather-data-row'><strong>Type: </strong><td class='td-indent'>" + type,
+        "<tr><td class='weather-data-row'><strong>Manager: </strong><td class='td-indent'>" + location.manager,
+      "</table>"
+    ].join("\n");
+
+    var popupText = "<h4 class='popup-header'>" + location.name + "</h4>" + table;
+
+    // Replace default marker with proper icon
+    var marker = location.marker;
+    if (location.type === "R")
+      marker.iconCode = "retail-icon";
+    else if (location.type === "D")
+      marker.iconCode = "dist-icon";
+
+    var icon = L.divIcon({
+      html:      "<i class='loc " + marker.iconCode + " " + curZoom.zoomClass + "''></i>",
+      iconSize:  curZoom.zoomSize,
+      className: "location-icon"
+    });
+    marker.setIcon(icon);
+
+    marker.bindPopup(popupText);
+    marker.setOpacity(1);
+  }
+}
+
+//------------------------------------------------------------------------------
 // Retrieves the current weather conditions from Jetstream
 function getCurrentConditions(location) {
   var lat = location.lat;
@@ -239,7 +253,8 @@ function gotCurrentConditions(location, data, status, jqXhr) {
   var weatherIcon = code2icon(data.iconCode);
   var desc = data.conditionPhrase;
   var uvPhrase = code2uv(data.uvIndex);
-  var type = (location.type==="D") ? "Distribution Center" : "Retail Location";
+  var service = (location.service==="ground") ? "Ground" : "Express";
+  var status = getShipmentStatus(location.status);
 
   var temp = windSpeed = "???";
   if (data.temp !== null) temp = getTempString(data.temp);
@@ -253,10 +268,10 @@ function gotCurrentConditions(location, data, status, jqXhr) {
 
   var table = [
     "<table>",
-      insertShipmentInfo(1, location),
-      insertShipmentInfo(2, location),
-      insertShipmentInfo(3, location),
-      "<tr><td class='weather-data-row'><strong>Type: </strong><td class='td-indent'>" + type,
+      "<tr><td class='weather-data-row'><strong>Service: </strong><td class='td-indent'>" + service,
+      "<tr><td class='weather-data-row'><strong>Status: </strong><td class='td-indent'>" + status,
+      "<tr><td class='weather-data-row'><strong>Current Location: </strong><td class='td-indent'>" + location.name,
+      "<tr><td class='weather-data-row'><strong>Estimated Delivery: </strong><td class='td-indent'>" + location.estimatedDelivery,
       "<tr><td class='weather-data-row'><strong>Conditions: </strong><td class='td-indent'>" + desc,
       "<tr><td class='weather-data-row'><strong>Temperature: </strong><td class='td-indent'>" + temp,
       "<tr><td class='weather-data-row'><strong>Wind Speed: </strong><td class='td-indent'>" + windSpeed,
@@ -264,32 +279,15 @@ function gotCurrentConditions(location, data, status, jqXhr) {
     "</table>"
   ].join("\n");
 
-  // Set the HTML for the current condition popup
-  /*var onHistoryClick = "javascript:getHistoricConditions(" + loc + ")";
-  var onPastDateClick = "javascript:enterDate(" + loc + ", false)";
-  var onFutureDateClick = "javascript:enterDate(" + loc + ", true)";*/
-  var buttons = [
-    //"<img class='date_img' alt='Weather on a past date' title='Weather on a past date' src='images/date_icon.png' onclick='" + onPastDateClick + "'></img>",
-    //"<img class='history_img' alt='Weather on this date in history' title='Weather on this date in history' src='images/history_icon.png' onclick='" + onHistoryClick + "'></img>",
-    //"<img class='predict_img' alt='Predict weather on a future date' title='Predict weather on a future date' src='images/predict_icon.png' onclick='" + onFutureDateClick + "'></img>"
-    "<img class='history_img' alt='Reschedule shipment' title='Reschedule shipment' src='images/history_icon.png' onclick='javascript:void(0)'></img>"
-  ].join("\n");
+  var popupText = "<h4 class='popup-header'>" + location.desc + "</h4>" + table;
 
-  var popupText = "<h4 class='popup-header'>" + location.name + "</h4>" + table;
-  if (location.type === "S" && location.status==="yellow") popupText = popupText + buttons;
-
-  // Replace default marker with weather icon
+  // Replace default marker with proper icon
   var marker = location.marker;
-  if (location.type === "R")
-    marker.iconCode = "retail-icon";
-  else if (location.type === "D")
-    marker.iconCode = "dist-icon";
-  else if (location.type === "S") {
-    if (location.service==="ground")
-      marker.iconCode = "ship-ground";
-    else if (location.service==="express")
-      marker.iconCode = "ship-express";
-  }
+  if (location.service==="ground")
+    marker.iconCode = "ship-ground";
+  else if (location.service==="express")
+    marker.iconCode = "ship-express";
+
   var icon = L.divIcon({
     html:      "<i class='loc " + marker.iconCode + " " + curZoom.zoomClass + "''></i>",
     iconSize:  curZoom.zoomSize,
@@ -303,27 +301,19 @@ function gotCurrentConditions(location, data, status, jqXhr) {
 
 //------------------------------------------------------------------------------
 // Returns shipment info if location.type shipment, otherwise empty string
-function insertShipmentInfo(order, location) {
-  if (location.type === "S") {
-    if (order === 1) {
-      return "<tr><td class='weather-data-row'><strong>Description: </strong><td class='td-indent'>" + location.desc;
-    }
-    else if (order === 2) {
-      var service;
-      if (location.service === "ground")
-        service = "Ground";
-      else if (location.service === "express")
-        service = "Express";
-      return "<tr><td class='weather-data-row'><strong>Service: </strong><td class='td-indent'>" + service;
-    }
-    else if (order === 3) {
-      return "<tr><td class='weather-data-row'><strong>Estimated Delivery: </strong><td class='td-indent'>" + location.estimatedDelivery;
-    }
-    else
-      return "";
-  }
+function getShipmentStatus(status) {
+  if (status === "pending")
+    return "Under Review";
+  else if (status === "accepted")
+    return "Accepted";
+  else if (status === "rejected")
+    return "Rejected";
+  else if (status === "shipped")
+    return "In Transit";
+  else if (status === "delivered")
+    return "Delivered";
   else
-    return "";
+    return "Unknown";
 }
 
 //------------------------------------------------------------------------------
@@ -711,7 +701,7 @@ function getLocations() {
 }
 
 //------------------------------------------------------------------------------
-// Retrieve all current shipments and populate list, warnings, and alterations
+// Retrieve all current shipments and populate list, predictions, and emergencies
 function getShipments() {
   $.ajax("/api/v1/db/shipments", {
     dataType: "json",
@@ -751,6 +741,7 @@ function getShipments() {
               name : data[i].curLocation,
               desc : data[i].description,
               service : data[i].service,
+              status : data[i].status,
               estimatedDelivery : data[i].estimatedDelivery,
               type : "S"
             });
@@ -758,14 +749,8 @@ function getShipments() {
         }
       }
 
-      /* Set notification count for warnings and alterations
-      $("a[href='#collapseOne']")[0].innerHTML = "Warnings (" + warnCount + ")";
-      $("a[href='#collapseTwo']")[0].innerHTML = "Alterations (" + altCount + ")";*/
-
       // Add respective markers to all locations
       Locations.forEach(function(location){
-        getCurrentConditions(location);
-
         var marker = L.marker(location, {
           title:   location.name,
           alt:     location.name,
@@ -773,8 +758,12 @@ function getShipments() {
         })
 
         location.marker = marker;
+        setPopup(location);
         marker.addTo(Map);
       });
+
+      getPredictions();
+      getEmergencyShipments();
     },
     error: function() {
       L.popup()
@@ -785,6 +774,8 @@ function getShipments() {
   })
 }
 
+//------------------------------------------------------------------------------
+// Adds the input shipment to both shipment list views
 function addShipment(shipment, icon) {
 
   // Get info about shipment's origin and destination
@@ -799,6 +790,7 @@ function addShipment(shipment, icon) {
 
   // Add shipment to the shipment list
   var li = document.createElement("li");
+  li.setAttribute("id", shipment.uniqueId + "-side");
   li.setAttribute("class", "shipment " + icon);
   li.innerHTML = "<a href='javascript:goBack(\"" + shipment.curLocation + "\")'><p class='shipment-text'>" +
                    "<span class='shipment-text-header'>Description: </span>" + shipment.description + "</br>" +
@@ -807,6 +799,7 @@ function addShipment(shipment, icon) {
                  "</p></a>";
   document.getElementById("shipments-list-side").appendChild(li);
   var liNew = document.createElement("li");
+  li.setAttribute("id", shipment.uniqueId + "-bottom");
   liNew.setAttribute("class", "shipment " + icon);
   liNew.innerHTML = "<a href='javascript:goBack(\"" + shipment.curLocation + "\")'><p class='shipment-text'>" +
                    "<span class='shipment-text-header'>Description: </span>" + shipment.description + "</br>" +
@@ -814,6 +807,71 @@ function addShipment(shipment, icon) {
                    "<span class='shipment-text-header'>Destination: </span>" + dest + "</br>" +
                  "</p></a>";
   document.getElementById("shipments-list-bottom").appendChild(liNew);
+}
+
+//------------------------------------------------------------------------------
+// Retrieves the current weather predictions
+function getPredictions() {
+
+  var count = 0;
+  Locations.forEach(function(location){
+    if (location.type === "R" && count === 0) {
+      insertWeatherBadge(location.name, "wi-rain");
+      var li = document.createElement("li");
+      li.setAttribute("id", location.uniqueId + "-prediction");
+      li.setAttribute("class", "alert-item wi wi-size-s " + "wi-rain");
+      li.innerHTML = "<a href='javascript:goBack(\"" + location.name + "\")'><p class='alert-text'>" +
+                       "<span class='alert-header'>Conditions: </span>" + "Severe Thunderstorms" + "</br>" +
+                       "<span class='alert-header'>Suggestion: </span>" + "Order additonal rain gear" + "</br>" +
+                       "<span class='alert-header'>Manager: </span>" + location.manager +
+                     "</p></a>";
+      document.getElementById("prediction-list").appendChild(li);
+      count++;
+    }
+  });
+
+  // Set notification badge for imminent weather predictions
+  $("a[href='#collapseOne']")[0].innerHTML = "Predictions (" + count + ")";
+}
+
+//------------------------------------------------------------------------------
+// Retrieves the current emergency shipments requested
+function getEmergencyShipments() {
+
+  var count = 0;
+  Locations.forEach(function(location){
+    if (location.type === "S" && location.status === "pending") {
+      insertWeatherBadge(location.name, "wi-snow", location.desc);
+      var li = document.createElement("li");
+      li.setAttribute("id", location.uniqueId + "-emergency");
+      li.setAttribute("class", "alert-item wi wi-size-s " + "wi-snow");
+      li.innerHTML = "<a href='javascript:goBack(\"" + location.name + "\")'><p class='alert-text'>" +
+                       "<span class='alert-header'>Conditions: </span>" + "Heavy snowstorms" + "</br>" +
+                       "<span class='alert-header'>Suggestion: </span>" + "Non-perishables and snow removal equipment" + "</br>" +
+                       "<span class='alert-header'>Method: </span>" + "Express" +
+                     "</p></a>";
+      document.getElementById("emergency-list").appendChild(li);
+      count++;
+    }
+  });
+
+  // Set notification badge for emergency shipments
+  $("a[href='#collapseTwo']")[0].innerHTML = "Emergency Shipments (" + count + ")";
+}
+
+//------------------------------------------------------------------------------
+// Insert a corresponding weather icon on the retail location
+function insertWeatherBadge(locationName, iconClass, desc) {
+  var icon = document.createElement("sup");
+  icon.setAttribute("class", "weather-badge wi wi-size-xs " + iconClass);
+  var iconDiv = $("div[title='" + locationName + "']");
+  if (iconDiv[0])
+    iconDiv[0].appendChild(icon);
+  else {
+    setTimeout(function() {
+      $("div[title='" + locationName + "']")[0].appendChild(icon);
+    }, 1000);
+  }
 }
 
 //------------------------------------------------------------------------------

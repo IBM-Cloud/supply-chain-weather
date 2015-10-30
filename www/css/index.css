@@ -180,7 +180,7 @@ html, body {
 
 .shipment {
   padding: 3px 5px;
-  border-bottom: 1px solid #94A3AB;
+  border-bottom: 2px solid #94A3AB;
   height: 50px;
 }
 
@@ -245,6 +245,7 @@ a, a:hover, a:focus {
 
 .panel-group .panel {
   border-radius: 0px;
+  background-color: #94A3AB;
 }
 
 #headingOne {
@@ -273,16 +274,31 @@ a, a:hover, a:focus {
 }
 
 .alert-list {
+  list-style: none;
   padding: 0px;
   margin-bottom: 0px;
-  list-style: none;
+  background-color: #DFE6EB;
 }
 
 .alert-item {
-  border: 1px solid #DFE6EB;
-  padding: 10px 0px;
+  display: inline-flex;
+  width: 100%;
+  border-bottom: 2px solid #94A3AB;
+  padding: 3px 5px;
   margin: 0px;
-  text-align: center;
+}
+
+.alert-item:hover {
+  cursor: pointer;
+  background-color: #94A3AB;
+  border: none;
+}
+
+.alert-text {
+  text-shadow: none;
+  padding: 0px 0px 0px 15px;
+  margin: 0px;
+  font-size: 10px;
 }
 
 .alert-header{
@@ -356,6 +372,10 @@ a, a:hover, a:focus {
 
 .wi.wi-popup {
   margin-top: 5px;
+}
+
+.weather-badge {
+  padding-left: 2px;
 }
 
 .wi.wi-size-xs {
