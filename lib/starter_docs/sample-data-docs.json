@@ -198,7 +198,7 @@
   {
     "type" : "shipment",
     "_id" : "S7",
-    "status" : "rejected",
+    "status" : "pending",
     "service" : "express",
     "desc" : "Loaves of Bread",
     "distribution" : "D3",

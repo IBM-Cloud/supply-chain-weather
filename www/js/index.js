@@ -60,7 +60,7 @@ function onLoad() {
 //---Map Event Listeners--------------------------------------------------------
 
   // New Zoom Level: Adjusts marker icon size
-  Map.on("zoomend", function(e) {
+  /*Map.on("zoomend", function(e) {
     // Get the corresponding css class for the current zoom level
     curZoom = getIconZoom(e.target._zoom);
 
@@ -74,7 +74,7 @@ function onLoad() {
       });
       marker.setIcon(icon);
     });
-  });
+  });*/
 
   // Close Popup: Destroy current datepicker instance
   Map.on("popupclose", function(e) {
@@ -746,6 +746,8 @@ function getShipments() {
               desc : data[i].description,
               service : data[i].service,
               status : data[i].status,
+              dist : data[i].distribution,
+              retail : data[i].retail,
               estimatedDelivery : data[i].estimatedDelivery,
               type : "S"
             });
@@ -828,8 +830,8 @@ function getPredictions() {
                        "<span class='alert-header'>Suggestion: </span>" + "Order additonal rain gear" + "</br>" +
                        "<span class='alert-header'>Manager: </span>" + location.manager +
                      "</p></a><div class='icon-con'>" +
-                       "<i class='accept-icon'></i>" +
-                       "<i class='reject-icon'></i>" +
+                       "<a class='icon-con' href='javascript:createShipment(\"" + location.uniqueId + "\")'><i class='accept-icon'></i></a>" +
+                       "<a class='icon-con' href='javascript:removeShipment(\"" + location.uniqueId + "-prediction\",\"prediction-list\")'><i class='reject-icon'></i></a>" +
                      "</div>";
       document.getElementById("prediction-list").appendChild(li);
       count++;
@@ -842,18 +844,24 @@ function getPredictions() {
 
 //------------------------------------------------------------------------------
 // Creates an emergency shipment request for a pending shipment
-function createEmergencyShipment(location) {
+function createEmergencyShipment(shipment) {
 
-  insertWeatherBadge(location.name, "wi-snow", location.desc);
+  // Get shipment's destination
+  Locations.forEach(function(location) {
+    if (location.uniqueId === shipment.retail) {
+      insertWeatherBadge(location.name, "wi-snow");
+    }
+  });
+
   var li = document.createElement("li");
-  li.setAttribute("id", location.uniqueId + "-emergency");
+  li.setAttribute("id", shipment.uniqueId + "-emergency");
   li.setAttribute("class", "alert-item wi wi-size-s " + "wi-snow");
-  li.innerHTML = "<a href='javascript:goBack(\"" + location.name + "\")'><p class='alert-text'>" +
+  li.innerHTML = "<a href='javascript:goBack(\"" + shipment.name + "\")'><p class='alert-text'>" +
                    "<span class='alert-header'>Conditions: </span>" + "Heavy snowstorms" + "</br>" +
                    "<span class='alert-header'>Suggestion: </span>" + "Non-perishables and snow removal equipment" + "</br>" +
                    "<span class='alert-header'>Method: </span>" + "Express" +
                  "</p></a><div class='icon-con'>" +
-                   "<i class='notify-icon'></i>" +
+                   "<a class='icon-con' href='javascript:remindManager(\"" + shipment.uniqueId + "\")'><i class='notify-icon'></i></a>" +
                  "</div>";
   document.getElementById("emergency-list").appendChild(li);
 
@@ -863,17 +871,12 @@ function createEmergencyShipment(location) {
 
 //------------------------------------------------------------------------------
 // Insert a corresponding weather icon on the retail location
-function insertWeatherBadge(locationName, iconClass, desc) {
+function insertWeatherBadge(locationName, iconClass) {
   var icon = document.createElement("sup");
   icon.setAttribute("class", "weather-badge wi wi-size-xs " + iconClass);
   var iconDiv = $("div[title='" + locationName + "']");
   if (iconDiv[0])
     iconDiv[0].appendChild(icon);
-  else {
-    setTimeout(function() {
-      $("div[title='" + locationName + "']")[0].appendChild(icon);
-    }, 1000);
-  }
 }
 
 //------------------------------------------------------------------------------
@@ -921,6 +924,62 @@ function getIconZoom(zoomLevel) {
 // Sets back button on popups
 function goBack(locationName) {
   $("div[title='" + locationName + "']").click();
+}
+
+//------------------------------------------------------------------------------
+// Create a shipment in the DB
+function createShipment(destId) {
+
+  var newShipment = {
+    type: "shipment",
+    _id: "S8",
+    status: "pending",
+    service: "express",
+    desc: "Rain gear",
+    distribution: "D2",
+    retail: destId,
+    curLoc : "Cincinnati, Ohio, US",
+    curLat : 39.1045,
+    curLon : -84.4958,
+    estDel : "Thu, 31 Oct 2015",
+    lastUpdate : "Thu, 30 Oct 2015 12:15:37 GMT",
+    items : [
+      {
+        "item" : "I7",
+        "quantity" : 75
+      },
+      {
+        "item" : "I8",
+        "quantity" : 120
+      }
+    ]
+  };
+
+  // Create new shipment in DB
+  $.post("/api/v1/db/shipments", newShipment,
+  function(data, status){
+      console.log(data)
+      // Send a notification to manager and remove prediction from list
+      if (status === "success") {
+        remindManager(data.id);
+        removeShipment(destId + "-prediction", "prediction-list");
+      }
+  });
+}
+
+//------------------------------------------------------------------------------
+// Remove item from the input list
+function removeShipment(uniqueId, list) {
+  document.getElementById(list).removeChild(document.getElementById(uniqueId));
+}
+
+//------------------------------------------------------------------------------
+// Resend notification to manager to accept shipment
+function remindManager(shipmentId) {
+  $.get("/api/v1/db/shipments/notify?shipment=" + shipmentId + "&environment=prod",
+  function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+  });
 }
 
 //------------------------------------------------------------------------------
