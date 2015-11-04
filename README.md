@@ -72,6 +72,7 @@ We are more than happy to accept external contributions to this project, be it i
 * Shipped icon made by [Nicholas Menghini][nicholas_menghini_url] [[source]][shipped_icon_url]
 * Delivered icon made by [addylord][addylord_url] [[source]][delivered_icon_url]
 * Notify icon made by [Edward Boatman][edward_boatman_url] [[source]][notify_icon_url]
+* Help icon made by [Consumer Financial Protection Bureau][cfpb_url] [[source]][help_icon_url]
 
 ## Privacy Notice
 The supply-chain-weather sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
@@ -109,6 +110,7 @@ Deployment tracking can be disabled by removing `require("cf-deployment-tracker-
 [shipped_icon_url]: https://thenounproject.com/search/?q=in+progress&i=17052
 [delivered_icon_url]: https://thenounproject.com/search/?q=completed&i=21729
 [notify_icon_url]: https://thenounproject.com/search/?q=alarm&i=291
+[help_icon_url]: https://thenounproject.com/search/?q=help&i=89674
 [addylord_url]: https://thenounproject.com/adelime/
 [nicholas_menghini_url]: http://nicholasmenghini.com/
 [leaonardo_schneider_url]: http://www.leonardoschneider.com/
@@ -117,3 +119,4 @@ Deployment tracking can be disabled by removing `require("cf-deployment-tracker-
 [alain_loubet_url]: https://thenounproject.com/PictaMan/
 [daniel_canabrava_url]: https://www.behance.net/DanielCanabrava
 [edward_boatman_url]: https://thenounproject.com/edward/
+[cfpb_url]: https://thenounproject.com/cfpb_minicons/

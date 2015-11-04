@@ -235,6 +235,11 @@ a, a:hover, a:focus {
   background-size: 32px;
 }
 
+.refresh-icon {
+  background: url(/../images/accepted_icon.png) no-repeat;
+  background-size: 20px;
+}
+
 .panel-group {
   margin: 0px;
 }
@@ -262,11 +267,71 @@ a, a:hover, a:focus {
 
 .panel-heading {
   padding: 12px 15px;
+  text-align: right;
+}
+
+.panel-heading:before, .panel-heading:after {
+  content: " ";
+  display: table;
+}
+
+.panel-heading:after {
+  clear: both;
 }
 
 .panel-title {
   padding-left: 35px;
   font-size: 20px;
+  display: inline;
+  float: left;
+}
+
+.help-icon {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  display: inline;
+  float: right;
+  outline:none;
+}
+
+.help-icon:hover {
+  cursor: pointer;
+}
+
+.help-icon strong {
+  line-height:30px;
+}
+
+.help-icon + span {
+    z-index: 10;
+    display: none;
+    padding: 10px 12px;
+    margin-top: 33px;
+    margin-left: -274px;
+    width: 300px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.help-icon:hover + span{
+    display:inline;
+    position:absolute;
+    border:2px solid #FFF;
+    color:#EEE;
+    background:#000 repeat-x 0 0;
+}
+.callout {
+  z-index: 20;
+  position: absolute;
+  border: 0;
+  top: -14px;
+  left: 265px;
+}
+
+/*CSS3 extras*/
+.help-icon + span {
+  box-shadow: 2px 2px 10px 0px #666;
 }
 
 .alert-panel {
