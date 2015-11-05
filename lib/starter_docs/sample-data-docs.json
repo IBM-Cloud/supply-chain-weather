@@ -3,56 +3,56 @@
     "type" : "distribution-center",
     "_id" : "D1",
     "loc" : "Salt Lake City, Utah, US",
-    "lat" : 40.7192,
-    "lon" : -111.9006,
+    "lat" : 40.71,
+    "lon" : -111.90,
     "managerName" : "Joseph Smith"
   },
   {
     "type" : "distribution-center",
     "_id" : "D2",
     "loc" : "Cincinnati, Ohio, US",
-    "lat" : 39.1045,
-    "lon" : -84.4958,
+    "lat" : 39.10,
+    "lon" : -84.49,
     "managerName" : "John Doe"
   },
   {
     "type" : "distribution-center",
     "_id" : "D3",
     "loc" : "Albany, New York, US",
-    "lat" : 42.6525,
-    "lon" : -73.7572,
+    "lat" : 42.65,
+    "lon" : -73.75,
     "managerName" : "Mary Joe"
   },
   {
     "type" : "retail-location",
     "_id" : "R1",
     "loc" : "Raleigh, North Carolina, US",
-    "lat" : 35.7186,
-    "lon" : -78.6319,
+    "lat" : 35.71,
+    "lon" : -78.63,
     "managerName" : "Jack Cracker"
   },
   {
     "type" : "retail-location",
     "_id" : "R2",
     "loc" : "Austin, Texas, US",
-    "lat" : 30.2264,
-    "lon" : -97.7495,
+    "lat" : 30.22,
+    "lon" : -97.74,
     "managerName" : "John Wayne"
   },
   {
     "type" : "retail-location",
     "_id" : "R3",
     "loc" : "San Francisco, California, US",
-    "lat" : 37.7295,
-    "lon" : -122.4481,
+    "lat" : 37.72,
+    "lon" : -122.44,
     "managerName" : "Sandy Payne"
   },
   {
     "type" : "retail-location",
     "_id" : "R4",
     "loc" : "New York, New York, US",
-    "lat" : 40.7127,
-    "lon" : -74.0059,
+    "lat" : 40.71,
+    "lon" : -74.00,
     "managerName" : "John Wayne"
   },
   {
@@ -64,8 +64,8 @@
     "distribution" : "D2",
     "retail" : "R1",
     "curLoc" : "Blacksburg, West Virginia, US",
-    "curLat" : 37.2303,
-    "curLon" : -80.4199,
+    "curLat" : 37.23,
+    "curLon" : -80.41,
     "estDel" : "Thu, 17 Oct 2015",
     "lastUpdate" : "Thu, 15 Oct 2015 16:15:37 GMT",
     "items" : [
@@ -88,8 +88,8 @@
     "distribution" : "D2",
     "retail" : "R2",
     "curLoc" : "Memphis, Tennessee, US",
-    "curLat" : 35.1918,
-    "curLon" : -90.0220,
+    "curLat" : 35.19,
+    "curLon" : -90.02,
     "estDel" : "Thu, 16 Oct 2015",
     "lastUpdate" : "Thu, 13 Oct 2015 12:15:37 GMT",
     "items" : [
@@ -108,8 +108,8 @@
     "distribution" : "D1",
     "retail" : "R3",
     "curLoc" : "Reno, Nevada, US",
-    "curLat" : 39.4404,
-    "curLon" : -119.7949,
+    "curLat" : 39.44,
+    "curLon" : -119.79,
     "estDel" : "Thu, 20 Oct 2015",
     "lastUpdate" : "Thu, 19 Oct 2015 12:15:37 GMT",
     "items" : [
@@ -132,8 +132,8 @@
     "distribution" : "D1",
     "retail" : "R3",
     "curLoc" : "Spring Creek, Nevada, US",
-    "curLat" : 40.8055,
-    "curLon" : -115.7629,
+    "curLat" : 40.80,
+    "curLon" : -115.76,
     "estDel" : "Thu, 22 Oct 2015",
     "lastUpdate" : "Thu, 20 Oct 2015 12:15:37 GMT",
     "items" : [
@@ -152,8 +152,8 @@
     "distribution" : "D2",
     "retail" : "R2",
     "curLoc" : "Dallas, Texas, US",
-    "curLat" : 32.7411,
-    "curLon" : -96.8005,
+    "curLat" : 32.74,
+    "curLon" : -96.80,
     "estDel" : "Thu, 22 Oct 2015",
     "lastUpdate" : "Thu, 20 Oct 2015 12:15:37 GMT",
     "items" : [
@@ -176,8 +176,8 @@
     "distribution" : "D3",
     "retail" : "R4",
     "curLoc" : "Poughkeepsie, New York, US",
-    "curLat" : 41.7000,
-    "curLon" : -73.9167,
+    "curLat" : 41.70,
+    "curLon" : -73.91,
     "estDel" : "Thu, 24 Oct 2015",
     "lastUpdate" : "Thu, 24 Oct 2015 12:15:37 GMT",
     "items" : [
@@ -204,8 +204,8 @@
     "distribution" : "D3",
     "retail" : "R4",
     "curLoc" : "Albany, New York, US",
-    "curLat" : 42.6525,
-    "curLon" : -73.7572,
+    "curLat" : 42.65,
+    "curLon" : -73.75,
     "estDel" : "Thu, 28 Oct 2015",
     "lastUpdate" : "Thu, 27 Oct 2015 12:15:37 GMT",
     "items" : [
