@@ -120,3 +120,12 @@ Deployment tracking can be disabled by removing `require("cf-deployment-tracker-
 [daniel_canabrava_url]: https://www.behance.net/DanielCanabrava
 [edward_boatman_url]: https://thenounproject.com/edward/
 [cfpb_url]: https://thenounproject.com/cfpb_minicons/
+
+## Installing this sample application
+
+To install this sample, <check the following instructions are correct> download the zip'ed code to your local machine and deploy to your space on Bluemix. You will need to change the name of the application so it is unique in the mybluemix.net domain.
+
+<tbc> Do we need to instantiate a new instance of the Insights for Weather?
+<tbc> Do we need any other services added?
+<tbc> If any of the above is true, what cf commands are required?
+<tbc> Will a "Deploy to Bluemix" button work here?
