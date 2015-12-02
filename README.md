@@ -120,3 +120,28 @@ Deployment tracking can be disabled by removing `require("cf-deployment-tracker-
 [daniel_canabrava_url]: https://www.behance.net/DanielCanabrava
 [edward_boatman_url]: https://thenounproject.com/edward/
 [cfpb_url]: https://thenounproject.com/cfpb_minicons/
+
+## Deploying this sample application to your space on bluemix.net
+
+To create your own version of the supply-chain-weather sample running, download the code from GitHub (https://github.com/IBM-Bluemix/supply-chain-weather)
+
+Edit the manifest.yml file to change the host: setting to your own unique value.  
+---
+applications:
+- name:       supply-chain-weather
+  host:       <your unique name for the application goes here>
+  path:       .
+  domain:     mybluemix.net
+  instances:  1
+  memory:     512M
+  command:    node app
+  buildpack:  sdk-for-nodejs
+
+Then create the Insights for Weather, and CloudantDB services. You should name them supply-chain-weather-insights and supply-chain-datastore respectively as these names are explicitly used in the code. Bind these services to your application when it is deployed to Bluemix. 
+
+Edit the vcap-local.json file and replace the items in capitals (USERNAME, PASSWORD, HOST AND URL) with the values you obtain from the Get Credentials on the Insights for Weather and CloudantDB services you created.
+
+Temporary fixes required
+Replace the code for server.js and weatherService.js (currently on the slack channel).  The app then loads and deploys correctly.
+This application also has an optional iOS app component which only works with the original application.  You may run the demonstration as a web application only demonstration at the moment.
+
