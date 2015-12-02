@@ -121,11 +121,27 @@ Deployment tracking can be disabled by removing `require("cf-deployment-tracker-
 [edward_boatman_url]: https://thenounproject.com/edward/
 [cfpb_url]: https://thenounproject.com/cfpb_minicons/
 
-## Installing this sample application
+## Deploying this sample application to your space on bluemix.net
 
-To install this sample, <check the following instructions are correct> download the zip'ed code to your local machine and deploy to your space on Bluemix. You will need to change the name of the application so it is unique in the mybluemix.net domain.
+To create your own version of the supply-chain-weather sample running, download the code from GitHub (https://github.com/IBM-Bluemix/supply-chain-weather)
 
-<tbc> Do we need to instantiate a new instance of the Insights for Weather?
-<tbc> Do we need any other services added?
-<tbc> If any of the above is true, what cf commands are required?
-<tbc> Will a "Deploy to Bluemix" button work here?
+Edit the manifest.yml file to change the host: setting to your own unique value.  
+---
+applications:
+- name:       supply-chain-weather
+  host:       <your unique name for the application goes here>
+  path:       .
+  domain:     mybluemix.net
+  instances:  1
+  memory:     512M
+  command:    node app
+  buildpack:  sdk-for-nodejs
+
+Then create the Insights for Weather, and CloudantDB services. You should name them supply-chain-weather-insights and supply-chain-datastore respectively as these names are explicitly used in the code. Bind these services to your application when it is deployed to Bluemix. 
+
+Edit the vcap-local.json file and replace the items in capitals (USERNAME, PASSWORD, HOST AND URL) with the values you obtain from the Get Credentials on the Insights for Weather and CloudantDB services you created.
+
+Temporary fixes required
+Replace the code for server.js and weatherService.js (currently on the slack channel).  The app then loads and deploys correctly.
+This application also has an optional iOS app component which only works with the original application.  You may run the demonstration as a web application only demonstration at the moment.
+
