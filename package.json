@@ -10,7 +10,7 @@
     "test": "echo no tests"
   },
   "engines": {
-    "node": "4.0.*"
+    "node": "4.0.x"
   },
   "license": "Apache-2.0",
   "repository": {
@@ -19,11 +19,11 @@
   },
   "dependencies": {
     "async": "0.9.x",
-    "cf-deployment-tracker-client": "*",
+    "cf-deployment-tracker-client": "0.0.x",
     "cfenv": "1.0.x",
     "hapi": "8.4.x",
     "lru-cache": "2.5.x",
-    "nano": "6.1.*",
+    "nano": "6.1.x",
     "request": "2.51.x",
     "restler": "^3.4.0",
     "underscore": "1.7.x"

@@ -1,10 +1,19 @@
 ---
+declared-services:
+  supply-chain-weather-insights:
+    label: weatherinsights
+    plan: Free
+  supply-chain-datastore:
+    label: cloudantNoSQLDB
+    plan: Shared
 applications:
 - name:       supply-chain-weather
   host:       supply-chain-weather
   path:       .
-  domain:     mybluemix.net
   instances:  1
   memory:     512M
   command:    node app
   buildpack:  sdk-for-nodejs
+  services:
+  - supply-chain-weather-insights
+  - supply-chain-datastore

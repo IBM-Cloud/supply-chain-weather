@@ -1,4 +1,7 @@
-bower_components
-node_modules
+bower_components/
+node_modules/
 tmp
 vcap-local.json
+.gitignore
+README.md
+demo-script.md

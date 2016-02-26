@@ -6,11 +6,11 @@
         "label": "cloudantNoSQLDB",
         "plan": "Shared",
         "credentials": {
-          "username": "YOUR_USERNAME",
-          "password": "YOUR_PASSWORD",
-          "host": "YOUR_HOST",
+          "username": "02c2f59a-19f3-413b-ac6d-3fabd28e1556-bluemix",
+          "password": "ca0ac2740474fe23c5ae75c54912188a6715f1041c3374608e919ad3b0426637",
+          "host": "02c2f59a-19f3-413b-ac6d-3fabd28e1556-bluemix.cloudant.com",
           "port": 443,
-          "url": "YOUR_URL"
+          "url": "https://02c2f59a-19f3-413b-ac6d-3fabd28e1556-bluemix:ca0ac2740474fe23c5ae75c54912188a6715f1041c3374608e919ad3b0426637@02c2f59a-19f3-413b-ac6d-3fabd28e1556-bluemix.cloudant.com"
         }
       }
     ],
@@ -20,11 +20,11 @@
         "label": "weatherinsights",
         "plan": "Free",
         "credentials": {
-          "username": "YOUR_USERNAME",
-          "password": "YOUR_PASSWORD",
-          "host": "YOUR_HOST",
+          "username": "8cb2cc73-bbeb-4aa9-97c0-a33aa5c75a0c",
+          "password": "0kCBimC4Py",
+          "host": "twcservice.mybluemix.net",
           "port": 443,
-          "url": "YOUR_URL"
+          "url": "https://8cb2cc73-bbeb-4aa9-97c0-a33aa5c75a0c:0kCBimC4Py@twcservice.mybluemix.net"
         }
       }
     ]

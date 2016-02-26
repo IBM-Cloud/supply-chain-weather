@@ -1,51 +1,147 @@
 # Supply Chain Weather Overview
 
-Supply Chain Weather is a sample Bluemix application which utilizes the [Weather Channel][weather_api_url] service and two mapping APIs, [Leaflet][leaflet_url] and [Esri Leaflet][esri_leaflet_url] to dynamically create and augment shipments for a retail chain store's supply chain.
+Supply Chain Weather is a sample Bluemix application which utilizes the [Insights for Weather][weather_service_url] service and two mapping APIs, [Leaflet][leaflet_url] and [Esri Leaflet][esri_leaflet_url] to dynamically create and augment shipments for a retail chain store's supply chain.
 
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)  
 [![Build Status](https://travis-ci.org/IBM-Bluemix/supply-chain-weather.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/supply-chain-weather)
 ![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/a8b5d364b1994a80342395cc781ea890/badge.svg)
 
+## Running the app on Bluemix
 
-## Example REST Calls
+The easiest way to deploy the app is to click the `Deploy to Bluemix` button above, but here you will find the instructions on manually deploying the application.
 
-### Creating a shipment (example)
-`POST /api/v1/db/shipments`
+1. If you do not already have a Bluemix account, [sign up here][bluemix_signup_url]
 
-Body:
+2. Download and install the [Cloud Foundry CLI][cloud_foundry_url] tool
 
-```
-{  
-    "_id": "S7",
-    "type": "shipment",  
-    "service": "ground",
-    "desc": "Cold weather clothes",
-    "distribution": "D3",
-    "retail": "R4",
-    "status": "pending",
-    "curLoc": "Charleston, South Carolina, US",
-    "curLat": 32.780891,
-    "curLon": -79.93471,
-    "estDel": "Thu, 24 Oct 2015",
-    "lastUpdate": "Thu, 24 Oct 2015 12:15:37 GMT",
-    "items": [
-        {
-            "item": "I1",
-            "quantity": 85
-        },
-        {
-            "item": "I2",
-            "quantity": 100
-        },
-        {
-            "item": "I3",
-            "quantity": 40
-        }
-    ]
-}
-```
+3. Clone the app to your local environment from your terminal using the following command:
 
-### Sending a notification for a new shipment (example)
-`GET /api/v1/db/shipments/notify?shipment=S7&environment=dev`
+  ```
+  git clone https://github.com/IBM-Bluemix/supply-chain-weather.git
+  ```
+
+4. `cd` into this newly created directory
+
+5. Open the `manifest.yml` file and change the `host` value to something unique.
+
+  The host you choose will determinate the subdomain of your application's URL:  `<host>.mybluemix.net`
+
+6. Connect to Bluemix in the command line tool and follow the prompts to log in.
+
+  ```
+  $ cf api https://api.ng.bluemix.net
+  $ cf login
+  ```
+
+7. Create the Weather Channel service in Bluemix.
+
+  ```
+  $ cf create-service weatherinsights Free supply-chain-weather-insights
+  ```
+  
+8. Create the Cloudant service in Bluemix.
+
+  ```
+  $ cf create-service cloudantNoSQLDB Shared supply-chain-datastore
+  ```
+
+9. Push the app to Bluemix.
+
+  ```
+  $ cf push
+  ```
+
+## Run the app locally
+1. If you do not already have a Bluemix account, [sign up here][bluemix_signup_url]
+
+2. If you have not already, [download node.js][download_node_url] and install it on your local machine.
+
+3. Clone the app to your local environment from your terminal using the following command:
+
+  ```
+  git clone https://github.com/IBM-Bluemix/supply-chain-weather.git
+  ```
+
+4. `cd` into this newly created directory
+
+5. Install the required npm and bower packages using the following command
+
+  ```
+  npm install
+  ```
+
+6. Create an instance of both the [Weather Channel service][weather_service_url] and the [Cloudant service][cloudant_service_url] using your Bluemix account. Once you have these services, replace the corresponding credentials in your `vcap-local.json` file
+
+9. Start your app locally with the following command
+
+  ```
+  npm run watch
+  ```
+
+This command will trigger [`cake`][cake_url] to build and start your application. When your app has started, your console will print that your `server started on: http://localhost:6020`.
+
+Since we are using `cake`, the app is rebuilt continuously as changes are made to the local file system. Therefore, you do not have to constantly stop and restart your app as you develop locally. Execute `npm run cake` to see the other commands available in the `Cakefile`.
+
+Happy developing!
+
+## REST API
+
+### Conditions
+**Current Conditions**  
+Description: Retrieve the current conditions at the input coordinates
+Example: `GET /api/v1/currentConditions?latitude=32.36&longitude=-86.27&units=e`  
+**Forecasted Conditions**  
+Description: Retrieve the 10 day forecast at the input coordinates
+Example: `GET /api/v1/forecastedConditions?latitude=32.36&longitude=-86.27&units=e`
+
+### Database (CRUD)
+**Distribution Centers**  
+Description: Retrieve a list of all the distribution centers  
+Retrieve Example: `GET /api/v1/db/distribution`  
+**Retail Locations**  
+Description: Retrieve a list of all the retail locations  
+Retrieve Example: `GET /api/v1/db/retail`  
+**Shipments**  
+Description: Retrieve a list of all the shipments  
+Create Example: `POST /api/v1/db/shipments` with payload:
+
+	{  
+	    "_id": "S9",
+	    "type": "shipment",  
+	    "service": "ground",
+	    "desc": "This is a sample shipment description",
+	    "distribution": "D3",
+	    "retail": "R4",
+	    "status": "pending",
+	    "curLoc": "Charleston, South Carolina, US",
+	    "curLat": 32.780891,
+	    "curLon": -79.93471,
+	    "estDel": "Thu, 24 Oct 2015",
+	    "lastUpdate": "Thu, 24 Oct 2015 12:15:37 GMT",
+	    "items": [
+	        {
+	            "item": "I1",
+	            "quantity": 85
+	        },
+	        {
+	            "item": "I2",
+	            "quantity": 100
+	        }
+	    ]
+	}
+
+Retrieve Example: `GET /api/v1/db/shipments`  
+**Items**  
+Description: Retrieve a list of all the items  
+Retrieve Example: `GET /api/v1/db/items`  
+
+### Mobile Push
+**Shipment Notification**  
+Description: Notifies the store manager than a new shipment has been created  
+Example: `GET /api/v1/db/shipments/notify?shipment=S7&environment=dev`  
+**Shipment Status Update**  
+Description: Change the status of a shipment based on a manager response  
+Example: `GET /api/v1/db/shipments/status?shipment=S7&status=accepted&environment=dev`  
 
 ## Troubleshooting
 
@@ -88,12 +184,15 @@ This data is collected from the VCAP_APPLICATION environment variable in IBM Blu
 
 Deployment tracking can be disabled by removing `require("cf-deployment-tracker-client").track();` from the beginning of the `app.js` file.
 
-[weather_api_url]: http://www.wunderground.com/weather/api/
+
+<!--Links-->
+[weather_service_url]: https://console.ng.bluemix.net/catalog/services/insights-for-weather/
+[cloudant_service_url]: https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/
 [leaflet_url]: http://leafletjs.com/
 [esri_leaflet_url]: http://esri.github.io/esri-leaflet/
 [bluemix_signup_url]: https://ibm.biz/supply-chain-weather-signup
 [cloud_foundry_url]: https://github.com/cloudfoundry/cli
-[download_node_url]: https://nodejs.org/download/
+[download_node_url]: https://nodejs.org/en/download/
 [cake_url]: http://coffeescript.org/#cake
 [issues_url]: https://github.com/IBM-Bluemix/supply-chain-weather/issues
 [warning_icon_url]: https://thenounproject.com/search/?q=warning&i=14055
