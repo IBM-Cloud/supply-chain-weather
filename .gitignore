@@ -1,7 +1,6 @@
 bower_components/
 www/bower/
 node_modules/
-tmp
+tmp/
 vcap-local.json
 *.log
-www/bower/

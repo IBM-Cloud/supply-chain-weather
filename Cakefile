@@ -20,7 +20,6 @@ preReqFile = "../ragents-test/tmp/pre-reqs-updated.txt"
 
 #-------------------------------------------------------------------------------
 task "watch", "source file changes -> build, serve", -> taskWatch()
-task "build", "run a build",                         -> taskServe()
 task "serve", "start server",                        -> taskServe()
 
 WatchSpec = "lib/**/* www/**/*"
@@ -30,7 +29,7 @@ mkdir "-p", "tmp"
 
 #-------------------------------------------------------------------------------
 watchIter = ->
-  taskBuild()
+  taskClean()
   taskServe()
 
 #-------------------------------------------------------------------------------
@@ -49,40 +48,15 @@ taskWatch = ->
       exit 0
 
 #-------------------------------------------------------------------------------
-taskBuild = ->
-  copyBowerFiles "www/bower"
-
-#-------------------------------------------------------------------------------
 taskServe = ->
   log "restarting server at #{new Date()}"
 
   daemon.start "server", "node", ["app"]
 
 #-------------------------------------------------------------------------------
-copyBowerFiles = (dir) ->
-  bowerConfig = require "./bower-config"
-
-  log "installing files from bower"
-
-  cleanDir dir
-
-  for name, {version, files} of bowerConfig
-    unless test "-d", "bower_components/#{name}"
-      bower "install #{name}##{version}"
-      log ""
-
-  for name, {version, files} of bowerConfig
-    for src, dst of files
-      src = "bower_components/#{name}/#{src}"
-
-      if dst is "."
-        dst = "#{dir}/#{name}"
-      else
-        dst = "#{dir}/#{name}/#{dst}"
-
-      mkdir "-p", dst
-
-      cp "-R", src, dst
+taskClean = ->
+  rm "-rf", "bower_components/"
+  rm "-rf", "tmp"
 
 #-------------------------------------------------------------------------------
 cleanDir = (dir) ->

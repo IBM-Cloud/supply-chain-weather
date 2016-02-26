@@ -1,7 +1,9 @@
 bower_components/
 node_modules/
-tmp
+www/bower/
+tmp/
 vcap-local.json
 .gitignore
 README.md
 demo-script.md
+.DS_Store
