@@ -88,10 +88,10 @@ Happy developing!
 
 ### Conditions
 **Current Conditions**  
-Description: Retrieve the current conditions at the input coordinates
+Description: Retrieve the current conditions at the input coordinates  
 Example: `GET /api/v1/currentConditions?latitude=32.36&longitude=-86.27&units=e`  
 **Forecasted Conditions**  
-Description: Retrieve the 10 day forecast at the input coordinates
+Description: Retrieve the 10 day forecast at the input coordinates  
 Example: `GET /api/v1/forecastedConditions?latitude=32.36&longitude=-86.27&units=e`
 
 ### Database (CRUD)
