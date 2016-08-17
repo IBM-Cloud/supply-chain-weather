@@ -1,3 +1,5 @@
+**DEPRECATED**: This app is being sunset in favor of the [logistics-wizard](https://github.com/ibm-bluemix/logistics-wizard) application
+
 # Supply Chain Weather Overview
 
 Supply Chain Weather is a sample Bluemix application which utilizes the [Insights for Weather][weather_service_url] service and two mapping APIs, [Leaflet][leaflet_url] and [Esri Leaflet][esri_leaflet_url] to dynamically create and augment shipments for a retail chain store's supply chain.
